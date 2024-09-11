@@ -158,12 +158,13 @@ set DOMAIN= 子域名（需要先去添加随便填写一个ip如8.8.8.8 并开�
 set TOKEN= API令牌 （不是Global API Key！！！ 就是编辑区域 DNS的 API 令牌）
 ```
 - ## 关于群晖Synology ddns
-
+```shell
 sudo wget https://raw.githubusercontent.com/songwqs/Cloudflare-DDNS/main/Synology/cloudflareddns.sh -O /sbin/cloudflareddns.sh
 
 (可选关闭代理 默认开启)sudo sed -i 's/proxy="true"/proxy="false"/' /sbin/cloudflareddns.sh
 
 sudo chmod +x /sbin/cloudflareddns.sh
+```
 ```shell
 sudo sh -c "cat >> /etc.defaults/ddns_provider.conf << EOF
 [Cloudflare]
