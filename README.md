@@ -133,6 +133,8 @@ curl -X PATCH "https://api.cloudflare.com/client/v4/zones/域名ID/dns_records/�
 -H "X-Auth-Key: 前面获取的 API 令牌" \
 -H "Content-Type: application/json" \
 --data '{"content":"最快 IP"}'
+
+
 ## Windows 系统
 "D:\Program Files\curl\bin\curl.exe" -X PUT "https://api.cloudflare.com/client/v4/zones/域名ID/dns_records/解析记录ID" ^
 -H "X-Auth-Email: 账号邮箱" ^
