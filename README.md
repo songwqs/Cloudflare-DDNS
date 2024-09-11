@@ -172,6 +172,26 @@ sudo sh -c "cat >> /etc.defaults/ddns_provider.conf << EOF
         website=https://www.cloudflare.com 
 EOF"
 ```
+### 免SSH 使用计划任务方式执行：  新增 计划的任务 》用户定义的脚本 》 用户账号选root  并复制以下内容到 任务设置 下的 用户定义的脚本
+```shell
+#!/bin/sh
+
+# 下载 cloudflareddns.sh 脚本到 /sbin 目录
+sudo wget https://raw.githubusercontent.com/songwqs/Cloudflare-DDNS/main/Synology/cloudflareddns.sh -O /sbin/cloudflareddns.sh
+
+# 为脚本添加可执行权限
+sudo chmod +x /sbin/cloudflareddns.sh
+
+# 将 Cloudflare 配置添加到 ddns_provider.conf 文件中
+sudo sh -c 'cat >> /etc.defaults/ddns_provider.conf << EOF
+[Cloudflare]
+        modulepath=/sbin/cloudflareddns.sh
+        queryurl=https://www.cloudflare.com
+        website=https://www.cloudflare.com
+EOF'
+```
+
+
 服务提供商：Cloudflare
 
 主机名：www.example.com 你的购买的域名
