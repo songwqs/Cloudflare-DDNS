@@ -174,6 +174,9 @@ sudo sh -c "cat >> /etc.defaults/ddns_provider.conf << EOF
 EOF"
 ```
 服务提供商：Cloudflare
+
 主机名：www.example.com 你的购买的域名
+
 用户名/电子邮件：<Zone ID> 域名的"区域ID"API
+
 密码密钥：<API Token> 操作DNS的API令牌
