@@ -57,3 +57,6 @@ v6_query_url="ipv6.whatismyip.akamai.com"
 update_interval=600
 ```
 
+- ## 关于Windows 脚本说明
+Global API Key-ddns
+需要zone_id 、id 、sub_domain(子域名)、Global API Key   
