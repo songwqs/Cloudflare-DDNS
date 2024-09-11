@@ -60,3 +60,18 @@ update_interval=600
 - ## 关于Windows 脚本说明
 Global API Key-ddns
 需要zone_id 、id 、sub_domain(子域名)、Global API Key   
+关于id ：域名 ID 指的是你在 Cloudflare 中托管一级/顶级域名的 ID（如 xxx.yyy，而不是子域名）
+```shell
+"D:\Program Files\curl\bin\curl.exe" -X GET "https://api.cloudflare.com/client/v4/zones" ^
+-H "X-Auth-Email: 账号邮箱" ^
+-H "X-Auth-Key: 前面获取的 API 令牌" ^
+-H "Content-Type: application/json"
+```
+返回
+```shell
+"id": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+"name": "yyy.zzz",
+"status": "active",
+```
+
+
