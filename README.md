@@ -57,7 +57,7 @@ v6_query_url="ipv6.whatismyip.akamai.com"
 update_interval=600
 ```
 
-- ## 关于Windows 脚本说明
+- ## 关于Windows 脚本 Global API Key-ddns 说明
 Global API Key-ddns
 需要zone_id 、id 、sub_domain(子域名)、Global API Key   
 关于id  这里的id 是子域名id
@@ -150,3 +150,11 @@ curl -X PATCH "https://api.cloudflare.com/client/v4/zones/域名ID/dns_records/�
 -H "Content-Type: application/json" ^
 --data "{\"content\":\"最快 IP\"}"
 ```
+- ## 关于Windows 脚本 API-TOKEN-ddns 说明
+需要几个必须项：
+```shell
+set ZONE_NAME= 主域名
+set DOMAIN= 子域名（需要先去添加随便填写一个ip如8.8.8.8 并开启仅 DNS）
+set TOKEN= API令牌 （不是Global API Key！！！ 就是编辑区域 DNS的 API 令牌）
+```
+
