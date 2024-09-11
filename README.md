@@ -117,4 +117,34 @@ curl -X GET "https://api.cloudflare.com/client/v4/zones/域名ID/dns_records?pag
 | proxied                | 是否走 CDN 代理，是：true，否：false |  
 | ttl                    | 解析记录生存时间，值为 1 则是自动，单位：秒 |
 
+# 更新域名解析记录
+```shell
+## Linux 系统
+curl -X PUT "https://api.cloudflare.com/client/v4/zones/域名ID/dns_records/解析记录ID" \
+-H "X-Auth-Email: 账号邮箱" \
+-H "X-Auth-Key: 前面获取的 API 令牌" \
+-H "Content-Type: application/json" \
+--data '{"type":"A","name":"xxx.yyy.zzz","content":"最快 IP","ttl":1,"proxied":true}'
 
+# 如果你只需要更新该域名解析记录中单独 “一个” 信息（上面那个只能同时设置域名解析记录的所有信息），那么可以改成这样：
+
+curl -X PATCH "https://api.cloudflare.com/client/v4/zones/域名ID/dns_records/解析记录ID" \
+-H "X-Auth-Email: 账号邮箱" \
+-H "X-Auth-Key: 前面获取的 API 令牌" \
+-H "Content-Type: application/json" \
+--data '{"content":"最快 IP"}'
+## Windows 系统
+"D:\Program Files\curl\bin\curl.exe" -X PUT "https://api.cloudflare.com/client/v4/zones/域名ID/dns_records/解析记录ID" ^
+-H "X-Auth-Email: 账号邮箱" ^
+-H "X-Auth-Key: 前面获取的 API 令牌" ^
+-H "Content-Type: application/json" ^
+--data "{\"type\":\"A\",\"name\":\"xxx.yyy.zzz\",\"content\":\"最快 IP\",\"ttl\":1,\"proxied\":true}"
+
+# 如果你只需要更新该域名解析记录中单独 “一个” 信息（上面那个只能同时设置域名解析记录的所有信息），那么可以改成这样：
+
+"D:\Program Files\curl\bin\curl.exe" -X PATCH "https://api.cloudflare.com/client/v4/zones/域名ID/dns_records/解析记录ID" ^
+-H "X-Auth-Email: 账号邮箱" ^
+-H "X-Auth-Key: 前面获取的 API 令牌" ^
+-H "Content-Type: application/json" ^
+--data "{\"content\":\"最快 IP\"}"
+```
