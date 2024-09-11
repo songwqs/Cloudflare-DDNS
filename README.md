@@ -164,19 +164,14 @@ sudo wget https://raw.githubusercontent.com/songwqs/Cloudflare-DDNS/main/Synolog
 (可选关闭代理 默认开启)sudo sed -i 's/proxy="true"/proxy="false"/' /sbin/cloudflareddns.sh
 
 sudo chmod +x /sbin/cloudflareddns.sh
-
+```shell
 sudo sh -c "cat >> /etc.defaults/ddns_provider.conf << EOF
-
 [Cloudflare]
-
-        modulepath=/sbin/cloudflareddns.sh
-        
+        modulepath=/sbin/cloudflareddns.sh 
         queryurl=https://www.cloudflare.com
-        
-        website=https://www.cloudflare.com
-        
+        website=https://www.cloudflare.com 
 EOF"
-
+```
 服务提供商：Cloudflare
 主机名：www.example.com 你的购买的域名
 用户名/电子邮件：<Zone ID> 域名的"区域ID"API
