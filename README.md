@@ -106,13 +106,21 @@ curl -X GET "https://api.cloudflare.com/client/v4/zones/域名ID/dns_records?pag
 "ttl":1,
 ```
 id	域名解析记录 ID
+
 zone_id	所属的域名 ID
+
 zone_name	所属的（顶级/一级）域名
+
 name	完整（子）域名
+
 type	解析记录类型
+
 content	解析 IP 地址
+
 proxied	是否走 CDN 代理，是：true，否：false
+
 ttl	解析记录生存时间，值为 1 则是自动，单位：秒
+
 
 
 
