@@ -60,18 +60,59 @@ update_interval=600
 - ## 关于Windows 脚本说明
 Global API Key-ddns
 需要zone_id 、id 、sub_domain(子域名)、Global API Key   
-关于id ：域名 ID 指的是你在 Cloudflare 中托管一级/顶级域名的 ID（如 xxx.yyy，而不是子域名）
+关于id  这里的id 是子域名id
+
+先获取域名 ID 指的是你在 Cloudflare 中托管一级/顶级域名的 ID（如 xxx.yyy，而不是子域名）
 ```shell
+## Linux 系统
+curl -X GET "https://api.cloudflare.com/client/v4/zones" \
+-H "X-Auth-Email: 账号邮箱" \
+-H "X-Auth-Key: 前面获取的 API 令牌" \
+-H "Content-Type: application/json"
+## Windows 系统
 "D:\Program Files\curl\bin\curl.exe" -X GET "https://api.cloudflare.com/client/v4/zones" ^
 -H "X-Auth-Email: 账号邮箱" ^
 -H "X-Auth-Key: 前面获取的 API 令牌" ^
 -H "Content-Type: application/json"
 ```
-返回
+返回json
 ```shell
 "id": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
 "name": "yyy.zzz",
 "status": "active",
 ```
+# 获取域名解析记录 ID
+```shell
+## Linux 系统
+curl -X GET "https://api.cloudflare.com/client/v4/zones/域名ID/dns_records?page=1&per_page=20&order=type&direction=asc" \
+-H "X-Auth-Email: 账号邮箱" \
+-H "X-Auth-Key: 前面获取的 API 令牌" \
+-H "Content-Type: application/json"
+## Windows 系统
+"D:\Program Files\curl\bin\curl.exe" -X GET "https://api.cloudflare.com/client/v4/zones/域名ID/dns_records?page=1&per_page=20&order=type&direction=asc" ^
+-H "X-Auth-Email: 账号邮箱" ^
+-H "X-Auth-Key: 前面获取的 API 令牌" ^
+-H "Content-Type: application/json"
+```
+返回json
+```shell
+"id":"yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy",
+"zone_id":"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+"zone_name":"yyy.zzz",
+"name":"xxx.yyy.zzz",
+"type":"A",
+"content":"X.X.X.X",
+"proxied":true,
+"ttl":1,
+```
+id	域名解析记录 ID
+zone_id	所属的域名 ID
+zone_name	所属的（顶级/一级）域名
+name	完整（子）域名
+type	解析记录类型
+content	解析 IP 地址
+proxied	是否走 CDN 代理，是：true，否：false
+ttl	解析记录生存时间，值为 1 则是自动，单位：秒
+
 
 
