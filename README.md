@@ -168,9 +168,13 @@ sudo chmod +x /sbin/cloudflareddns.sh
 sudo sh -c "cat >> /etc.defaults/ddns_provider.conf << EOF
 
 [Cloudflare]
+
         modulepath=/sbin/cloudflareddns.sh
+        
         queryurl=https://www.cloudflare.com
+        
         website=https://www.cloudflare.com
+        
 EOF"
 
 服务提供商：Cloudflare
