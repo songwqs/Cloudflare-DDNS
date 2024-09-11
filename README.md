@@ -164,8 +164,7 @@ sudo wget https://raw.githubusercontent.com/songwqs/Cloudflare-DDNS/main/Synolog
 (可选关闭代理 默认开启)sudo sed -i 's/proxy="true"/proxy="false"/' /sbin/cloudflareddns.sh
 
 sudo chmod +x /sbin/cloudflareddns.sh
-```
-```shell
+
 sudo sh -c "cat >> /etc.defaults/ddns_provider.conf << EOF
 [Cloudflare]
         modulepath=/sbin/cloudflareddns.sh 
